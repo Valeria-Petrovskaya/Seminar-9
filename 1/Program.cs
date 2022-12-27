@@ -1,10 +1,16 @@
-﻿int rec (int M, int N)
+﻿int SumNM(int minNum, int maxNum)
 {
-    if (M > N)
-    return N;
-    return ((M + N) * (N - M + 1))/2;
+    if (minNum < maxNum)
+    {
+        return maxNum + SumNM(minNum, (maxNum-1));
+    }
+    else
+    {
+        return maxNum;
+    }
 }
-Console.Clear();
-Console.Write("Введите M и N: ");
-int [] numbers = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
-Console.WriteLine(rec(numbers[0], numbers [1]));
+Console.WriteLine("Введите меньшее число: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите большее число:  ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine(SumNM(m, n));
